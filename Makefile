@@ -1,7 +1,7 @@
 SERVICE = configs-service
 COMMON = dev-efficiency-common
 test:
-	pytest --cov=backend --cov-fail-under 100 --blockage  --cov-report term-missing
+	pytest --cov=backend --blockage  --cov-report term-missing
 
 coverage-collect:
 	coverage run -m pytest
@@ -28,5 +28,8 @@ safety:
 
 check-licenses:
 	check_licenses > /dev/null
+
+requirements:
+	pip install -r requirements-dev.txt
 
 check: isort flake8 mypy bandit safety check-licenses test
