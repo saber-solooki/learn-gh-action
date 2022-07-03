@@ -4,9 +4,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        checks: [ 'make flake8', 'make mypy', 'make bandit', 'make safety', 'make test' ]
+#    strategy:
+#      matrix:
+#        checks: [ 'make flake8', 'make mypy', 'make bandit', 'make safety', 'make test' ]
 
     steps:
       - name: checkout repo
