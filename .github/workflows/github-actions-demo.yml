@@ -25,11 +25,11 @@ jobs:
 #          key: ${{ runner.os }}-pip-${{ hashFiles('requirements**.txt') }}
 #          restore-keys: |
 #            ${{ runner.os }}-pip-
-      - uses: actions/cache@v3
-        id: python_cache
-        with:
-          path: ${{ env.pythonLocation }}
-          key:  ${{ env.pythonLocation }}-${{ hashFiles('requirements**.txt') }}
+#      - uses: actions/cache@v3
+#        id: python_cache
+#        with:
+#          path: ${{ env.pythonLocation }}
+#          key:  ${{ env.pythonLocation }}-${{ hashFiles('requirements**.txt') }}
 
       - name: Install dependencies
 #        if: steps.requirements_cache.outputs.cache-hit != 'true'
