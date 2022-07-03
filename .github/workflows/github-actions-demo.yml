@@ -28,19 +28,17 @@ jobs:
       - uses: actions/cache@v3
         id: python_cache
         with:
-          path: venv
-          key: pip-${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('requirements**.txt') }}
+          path: ${{ env.pythonLocation }}
+          key:  ${{ env.pythonLocation }}-${{ hashFiles('dev-requirements.txt') }}
 
       - name: Install dependencies
-        if: steps.python_cache.outputs.cache-hit != 'true'
+#        if: steps.requirements_cache.outputs.cache-hit != 'true'
         run: |
-          if [ -d "venv" ]; then rm -rf venv; fi
-          python3 -m venv venv
-          venv/bin/python3 -m pip install -U pip setuptools
-          venv/bin/python3 -m pip install -r requirements-dev.txt
+          python -m pip install -U pip setuptools
+          python -m pip install -r requirements-dev.txt
 
-      - name: activate venv
-        run: source venv/bin/activate
+#      - name: activate venv
+#        run: source venv/bin/activate
 
       - name: Run checks
         id: run_checks
