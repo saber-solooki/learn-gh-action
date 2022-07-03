@@ -9,7 +9,7 @@ coverage-collect:
 coverage: coverage-collect
 
 mypy:
-	mypy backend tests *.py
+	mypy app tests
 
 flake8:
 	flake8 .
@@ -26,10 +26,7 @@ bandit:
 safety:
 	safety check --bare --full-report -r requirements.txt -r requirements-dev.txt --ignore=42194
 
-check-licenses:
-	check_licenses > /dev/null
-
 requirements:
 	pip install -r requirements-dev.txt
 
-check: isort flake8 mypy bandit safety check-licenses test
+check: isort flake8 mypy bandit safety test
